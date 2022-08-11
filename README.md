@@ -1,2 +1,4 @@
 # KDAI_2022
-Repository for course works and material
+M.Sc. (Data Science and Analytics)
+Repository for course works and materials.
+
