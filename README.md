@@ -1,5 +1,6 @@
 # KDAI_2022
 M.Sc. in Data Science and Analytics, KMITL\
+(KDAI KMITL Digital Analytics and Intelligence Center)\
 Repository for course works and materials.
 
 ### Course Schedule
