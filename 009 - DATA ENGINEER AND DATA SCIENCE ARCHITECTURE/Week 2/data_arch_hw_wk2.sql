@@ -65,9 +65,10 @@ WHERE Super_ssn = (SELECT Ssn
 
 SELECT em.Fname + ' ' + em.Lname AS 'employee_name'
      , dp.Dname                  AS 'department_name'
+     , Mgr_ssn                   AS 'manager_code'
 FROM dbo.EMPLOYEE em,
      dbo.DEPARTMENT dp
-WHERE em.Dno = dp.Dnumber
+WHERE em.Ssn = dp.Mgr_ssn
   AND dp.Dname = 'Research'
 ;
 
