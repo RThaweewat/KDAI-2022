@@ -22,21 +22,23 @@ WHERE wo.Essn = em.Ssn
 
 -- Method 1 : Get only two employees sort by total working hours
 SELECT TOP 2 em.Fname + ' ' + em.Lname AS 'employee_name'
+           , em.Ssn                    AS 'employee_code'
            , SUM(wo.Hours)             AS 'total_work_hour'
 FROM dbo.EMPLOYEE em,
      dbo.WORKS_ON wo
 WHERE wo.Essn = em.Ssn
-GROUP BY em.Fname, em.Lname
+GROUP BY em.Fname, em.Lname, em.Ssn
 ORDER BY total_work_hour DESC
 ;
 
 -- Method 2: Get all employees by Top 2 total working hours
-SELECT TOP 2 em.Fname + ' ' + em.Lname AS 'employee_name'
-           , SUM(wo.Hours)             AS 'total_work_hour'
+SELECT em.Fname + ' ' + em.Lname AS 'employee_name'
+     , em.Ssn                    AS 'employee_code'
+     , SUM(wo.Hours)             AS 'total_work_hour'
 FROM dbo.EMPLOYEE em,
      dbo.WORKS_ON wo
 WHERE wo.Essn = em.Ssn
-GROUP BY em.Fname, em.Lname
+GROUP BY em.Fname, em.Lname, em.Ssn
 HAVING SUM(wo.Hours) IN
        (SELECT DISTINCT TOP 2 SUM(Hours) AS 'total_hour'
         FROM dbo.WORKS_ON
