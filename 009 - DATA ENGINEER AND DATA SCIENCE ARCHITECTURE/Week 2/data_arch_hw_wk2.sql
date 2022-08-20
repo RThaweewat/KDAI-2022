@@ -66,7 +66,7 @@ SELECT em.Fname + ' ' + em.Lname AS 'employee_name'
 FROM dbo.EMPLOYEE em,
      dbo.DEPARTMENT dp
 WHERE em.Dno = dp.Dnumber
-  AND Dname = 'Research'
+  AND dp.Dname = 'Research'
 ;
 
 -- =============================================
