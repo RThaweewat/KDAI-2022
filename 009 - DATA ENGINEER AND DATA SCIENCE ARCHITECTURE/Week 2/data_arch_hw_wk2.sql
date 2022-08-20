@@ -20,12 +20,29 @@ WHERE wo.Essn = em.Ssn
 -- Exam 2
 -- List top 2 employee (ssn) who work the most hours across the projects
 
+-- Method 1 : Get only "two" employees
 SELECT TOP 2 em.Fname + ' ' + em.Lname AS 'employee_name'
-           , wo.Hours                  AS 'work_hour'
+           , SUM(wo.Hours)             AS 'total_work_hour'
 FROM dbo.EMPLOYEE em,
      dbo.WORKS_ON wo
 WHERE wo.Essn = em.Ssn
-ORDER BY Hours DESC
+GROUP BY em.Fname, em.Lname
+ORDER BY total_work_hour DESC
+;
+
+-- Method 2: Get all employees by Top 2 total working hours
+SELECT TOP 2 em.Fname + ' ' + em.Lname AS 'employee_name'
+           , SUM(wo.Hours)             AS 'total_work_hour'
+FROM dbo.EMPLOYEE em,
+     dbo.WORKS_ON wo
+WHERE wo.Essn = em.Ssn
+GROUP BY em.Fname, em.Lname
+HAVING SUM(wo.Hours) IN
+       (SELECT DISTINCT TOP 2 SUM(Hours) AS 'total_hour'
+        FROM dbo.WORKS_ON
+        GROUP BY Essn
+        ORDER BY total_hour DESC)
+ORDER BY total_work_hour DESC
 ;
 
 -- =============================================
