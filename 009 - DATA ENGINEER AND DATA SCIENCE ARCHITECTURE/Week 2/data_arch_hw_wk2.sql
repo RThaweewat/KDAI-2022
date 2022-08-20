@@ -43,7 +43,7 @@ WHERE Super_ssn = (SELECT Ssn
 
 SELECT em.Fname AS 'full_name'
 FROM dbo.EMPLOYEE em,
-     dbo.DEPARTMENT
+     dbo.DEPARTMENT dp
 WHERE Super_ssn IS NULL
   AND Dname = 'Research';
 
@@ -56,7 +56,7 @@ SELECT em.Fname   AS 'full_name'
      , em.Lname   AS 'last_name'
      , em2.Fname  AS 'superviser_name'
      , em.Salary  AS 'salary'
-	 , em2.Salary AS 'superviser_salary'
+	, em2.Salary AS 'superviser_salary'
 FROM dbo.EMPLOYEE em,
      dbo.EMPLOYEE em2
 WHERE em.Super_Ssn = em2.ssn
