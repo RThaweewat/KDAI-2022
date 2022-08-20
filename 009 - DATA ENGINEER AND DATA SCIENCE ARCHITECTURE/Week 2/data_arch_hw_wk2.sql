@@ -18,8 +18,7 @@ WHERE Essn = em.Ssn
 
 -- =============================================
 -- Exam 2
--- List top 2 employee (ssn) who work the most hours 
--- across the projects
+-- List top 2 employee (ssn) who work the most hours across the projects
 
 SELECT TOP 2 em.Fname AS 'full_name'
            , wo.Hours AS 'work_hour'
@@ -31,8 +30,7 @@ ORDER BY Hours DESC
 
 -- =============================================
 -- Exam 3
--- Find the names of all employees who are directly
--- supervised by ‘Franklin Wong’.
+-- Find the names of all employees who are directly supervised by ‘Franklin Wong’.
 
 SELECT em.Fname AS 'full_name'
 FROM dbo.EMPLOYEE em
