@@ -13,7 +13,7 @@ FROM dbo.EMPLOYEE em,
 WHERE wo.Essn = em.Ssn
   AND em.Dno = '5'
   AND pj.Pnumber = wo.Pno  
-  AND Hours > 10
+  AND wo.Hours > 10
   AND pj.Pname = 'ProductX'
 ;
 
